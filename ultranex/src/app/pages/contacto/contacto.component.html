@@ -1,0 +1,159 @@
+<!-- HERO -->
+<section class="page-hero page-hero--blue">
+  <div class="container">
+    <span class="section-label" style="color:var(--ultranex-yellow)">Estamos aquí</span>
+    <h1 class="page-hero__title">Contacto y Cotización</h1>
+    <p class="page-hero__subtitle">
+      Llena el formulario o escríbenos por WhatsApp. Te respondemos de inmediato.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contacto-layout">
+
+      <!-- FORMULARIO -->
+      <div class="contacto-form-wrap">
+        <h2 class="contacto-form-wrap__title">Solicitar cotización</h2>
+
+        @if (enviado()) {
+          <div class="contacto-success anim-scale-in">
+            <div class="contacto-success__icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h3>¡Mensaje enviado!</h3>
+            <p>Nos comunicaremos contigo en breve. También podés escribirnos directo por WhatsApp.</p>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <button class="btn btn--primary" (click)="resetForm()">Nuevo mensaje</button>
+              <a href="https://wa.me/59179047111" target="_blank" class="btn btn--yellow">WhatsApp</a>
+            </div>
+          </div>
+        } @else {
+          <div class="contacto-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Nombre completo *</label>
+                <input class="form-control" type="text" placeholder="Tu nombre" [(ngModel)]="form.nombre" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Empresa (opcional)</label>
+                <input class="form-control" type="text" placeholder="Nombre de empresa" [(ngModel)]="form.empresa" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Teléfono / WhatsApp *</label>
+                <input class="form-control" type="tel" placeholder="+591 7XXXXXXX" [(ngModel)]="form.telefono" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input class="form-control" type="email" placeholder="correo@ejemplo.com" [(ngModel)]="form.email" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Ciudad de origen *</label>
+                <select class="form-control" [(ngModel)]="form.ciudad_origen">
+                  <option value="">Seleccionar...</option>
+                  @for (c of ciudades; track c) { <option [value]="c">{{ c }}</option> }
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Ciudad de destino *</label>
+                <select class="form-control" [(ngModel)]="form.ciudad_destino">
+                  <option value="">Seleccionar...</option>
+                  @for (c of ciudades; track c) { <option [value]="c">{{ c }}</option> }
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Tipo de envío</label>
+                <select class="form-control" [(ngModel)]="form.tipo_envio">
+                  <option value="">Seleccionar...</option>
+                  <option value="documento">Documento</option>
+                  <option value="paquete">Paquete</option>
+                  <option value="caja">Caja</option>
+                  <option value="especial">Especial / Frágil</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Tipo de servicio</label>
+                <select class="form-control" [(ngModel)]="form.tipo_servicio">
+                  <option value="">Seleccionar...</option>
+                  <option value="normal">Normal (24 horas)</option>
+                  <option value="expreso">Expreso (4–6 horas)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mensaje o descripción del envío</label>
+              <textarea class="form-control" rows="4" placeholder="Descríbenos tu envío, dimensiones, peso, etc." [(ngModel)]="form.mensaje"></textarea>
+            </div>
+
+            <div class="contacto-form__actions">
+              <button class="btn btn--primary btn--lg" (click)="enviarFormulario()" [disabled]="loading() || !form.nombre || !form.telefono">
+                @if (loading()) {
+                  <span class="spinner-sm"></span> Enviando...
+                } @else {
+                  Enviar solicitud
+                }
+              </button>
+              <a href="https://wa.me/59179047111?text=Hola%20ULTRANEX,%20quiero%20cotizar%20un%20envío" target="_blank" class="btn btn--yellow btn--lg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.122 1.528 5.856L0 24l6.335-1.652A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.02-1.37l-.36-.214-3.755.98.999-3.647-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+                WhatsApp directo
+              </a>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- SIDEBAR INFO -->
+      <aside class="contacto-sidebar">
+        <div class="contacto-sidebar__card">
+          <h3 class="contacto-sidebar__title">Contacto directo</h3>
+          <div class="contacto-contact-item">
+            <div class="contacto-contact-item__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.122 1.528 5.856L0 24l6.335-1.652A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.02-1.37l-.36-.214-3.755.98.999-3.647-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+            </div>
+            <div>
+              <div class="contacto-contact-item__label">WhatsApp</div>
+              <a href="https://wa.me/59179047111" target="_blank" class="contacto-contact-item__val">+591 79047111</a>
+            </div>
+          </div>
+          <div class="contacto-contact-item">
+            <div class="contacto-contact-item__icon contacto-contact-item__icon--blue">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contacto-contact-item__label">Email</div>
+              <a href="mailto:ultranex@gmail.com" class="contacto-contact-item__val">ultranex&#64;gmail.com</a>
+            </div>
+          </div>
+          <div class="contacto-horario">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div>
+              <div class="contacto-horario__label">Atención 24/7</div>
+              <div class="contacto-horario__val">Todos los días, todo el año</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OFICINAS -->
+        <div class="contacto-sidebar__card">
+          <h3 class="contacto-sidebar__title">Nuestras Oficinas</h3>
+          @for (o of oficinas; track o.ciudad) {
+            <div class="contacto-oficina">
+              <div class="contacto-oficina__ciudad">{{ o.ciudad }}</div>
+              <a [href]="'tel:' + o.tel" class="contacto-oficina__tel">{{ o.tel }}</a>
+              <a [href]="o.mapsUrl" target="_blank" class="contacto-oficina__maps">Ver en mapa →</a>
+            </div>
+          }
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

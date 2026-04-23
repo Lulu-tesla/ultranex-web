@@ -1,0 +1,117 @@
+<!-- LOGIN FORM (si no está logueado) -->
+@if (!isLoggedIn()) {
+  <section class="login-section">
+    <div class="login-card anim-scale-in">
+      <div class="login-card__logo">
+        <span class="login-logo-name">ULTRANEX</span>
+        <span class="login-logo-sub">Área de Clientes</span>
+      </div>
+      <h2 class="login-card__title">Iniciar Sesión</h2>
+
+      @if (loginError()) {
+        <div class="login-error">{{ loginError() }}</div>
+      }
+
+      <div class="form-group" style="margin-bottom:16px;">
+        <label class="form-label">Email</label>
+        <input class="form-control" type="email" placeholder="correo@ejemplo.com"
+          [value]="email()" (input)="email.set($any($event.target).value)" />
+      </div>
+      <div class="form-group" style="margin-bottom:24px;">
+        <label class="form-label">Contraseña</label>
+        <input class="form-control" type="password" placeholder="••••••••"
+          [value]="password()" (input)="password.set($any($event.target).value)"
+          (keydown.enter)="login()" />
+      </div>
+      <button class="btn btn--primary" style="width:100%; justify-content:center;" (click)="login()">
+        Ingresar
+      </button>
+      <div class="login-card__footer">
+        ¿No tenés cuenta? <a routerLink="/contacto">Contáctanos</a>
+      </div>
+    </div>
+  </section>
+}
+
+<!-- DASHBOARD (si está logueado) -->
+@if (isLoggedIn()) {
+  <div class="dashboard anim-fade-in">
+    <!-- HEADER -->
+    <div class="dashboard__header">
+      <div class="container">
+        <div class="dashboard__header-inner">
+          <div>
+            <h1 class="dashboard__title">Mi Panel</h1>
+            <p class="dashboard__subtitle">Gestión de envíos y seguimiento</p>
+          </div>
+          <div class="dashboard__header-actions">
+            <a routerLink="/rastreo" class="btn btn--secondary btn--sm">Rastrear envío</a>
+            <button class="btn btn--sm" style="border:1px solid var(--color-border); color:var(--color-text-secondary);" (click)="logout()">Cerrar sesión</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top: var(--space-xl); padding-bottom: var(--space-3xl);">
+      <!-- METRICS -->
+      <div class="dashboard__metrics">
+        <div class="metric-card">
+          <div class="metric-card__label">Total envíos</div>
+          <div class="metric-card__val">{{ envios.length }}</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card__label">En tránsito</div>
+          <div class="metric-card__val" style="color:var(--ultranex-blue)">1</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card__label">Entregados</div>
+          <div class="metric-card__val" style="color:var(--color-success)">3</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card__label">Gasto total</div>
+          <div class="metric-card__val">Bs 275</div>
+        </div>
+      </div>
+
+      <!-- ENVÍOS TABLE -->
+      <div class="dashboard__table-wrap">
+        <div class="dashboard__table-header">
+          <h3>Mis envíos</h3>
+          <a routerLink="/contacto" class="btn btn--primary btn--sm">+ Nuevo envío</a>
+        </div>
+        <div class="envios-table">
+          <div class="envios-table__head">
+            <span>Código</span>
+            <span>Destino</span>
+            <span>Tipo</span>
+            <span>Estado</span>
+            <span>Fecha</span>
+            <span>Costo</span>
+            <span></span>
+          </div>
+          @for (e of envios; track e.codigo) {
+            <div class="envios-table__row">
+              <span class="envios-table__codigo">{{ e.codigo }}</span>
+              <span>{{ e.destino }}</span>
+              <span>
+                <span class="badge" [class]="e.tipo === 'Expreso' ? 'badge--red' : 'badge--blue'">{{ e.tipo }}</span>
+              </span>
+              <span>
+                <span class="badge" [class]="e.estado === 'entregado' ? 'badge--success' : 'badge--blue'">
+                  {{ estadoLabel(e.estado) }}
+                </span>
+              </span>
+              <span style="color:var(--color-text-muted); font-size:0.9rem;">{{ e.fecha }}</span>
+              <span style="font-weight:600;">Bs {{ e.costo }}</span>
+              <span>
+                <a [routerLink]="['/rastreo', e.codigo]" class="btn btn--sm" style="border:1px solid var(--color-border); color:var(--ultranex-blue); padding:6px 12px; font-size:0.8rem;">
+                  Rastrear
+                </a>
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}

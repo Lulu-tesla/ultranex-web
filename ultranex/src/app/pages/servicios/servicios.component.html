@@ -1,0 +1,93 @@
+<!-- PAGE HERO -->
+<section class="page-hero page-hero--blue">
+  <div class="container">
+    <span class="section-label" style="color: var(--ultranex-yellow)">Lo que hacemos</span>
+    <h1 class="page-hero__title">Nuestros Servicios</h1>
+    <p class="page-hero__subtitle">
+      Soluciones de courier para documentos, paquetes, cajas y envíos especiales.
+      Servicio normal y expreso en toda Bolivia.
+    </p>
+  </div>
+</section>
+
+<!-- TIEMPOS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Tiempos de entrega</span>
+      <h2 class="section-title">Elige tu modalidad</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="tiempos-grid">
+      @for (t of tiempos; track t.tipo) {
+        <div class="tiempo-card tiempo-card--{{ t.color }}">
+          <div class="tiempo-card__tipo">{{ t.tipo }}</div>
+          <div class="tiempo-card__tiempo">{{ t.tiempo }}</div>
+          <p class="tiempo-card__desc">{{ t.desc }}</p>
+          <a routerLink="/contacto" class="btn" [class]="t.color === 'blue' ? 'btn--primary' : 'btn--danger'">
+            Contratar
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS DETALLE -->
+<section class="section section--gray">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Catálogo completo</span>
+      <h2 class="section-title">Todos nuestros servicios</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="servicios-detalle-grid">
+      @for (s of servicios; track s.titulo) {
+        <div class="servicio-detalle-card servicio-detalle-card--{{ s.color }}">
+          <div class="servicio-detalle-card__header">
+            <div class="servicio-detalle-card__icon">
+              @if (s.icon === 'doc') {
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              } @else if (s.icon === 'box') {
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              } @else if (s.icon === 'caja') {
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+              } @else if (s.icon === 'fragil') {
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              } @else if (s.icon === 'corporate') {
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              } @else {
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/></svg>
+              }
+            </div>
+            <h3 class="servicio-detalle-card__titulo">{{ s.titulo }}</h3>
+          </div>
+          <p class="servicio-detalle-card__desc">{{ s.desc }}</p>
+          <ul class="servicio-detalle-card__lista">
+            @for (d of s.detalle; track d) {
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {{ d }}
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container" style="text-align:center;">
+    <h2 class="section-title">¿Necesitas un servicio personalizado?</h2>
+    <p class="section-subtitle" style="margin: 0 auto 32px;">
+      Para clientes corporativos ofrecemos tarifas especiales y atención personalizada.
+      Contáctanos por WhatsApp o llena el formulario.
+    </p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://wa.me/59179047111" target="_blank" class="btn btn--primary btn--lg">WhatsApp</a>
+      <a routerLink="/contacto" class="btn btn--secondary btn--lg">Formulario de contacto</a>
+    </div>
+  </div>
+</section>

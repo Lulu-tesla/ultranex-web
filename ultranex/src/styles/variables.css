@@ -1,0 +1,74 @@
+/* ============================================
+   ULTRANEX – CSS Custom Properties
+   Colores: Azul #003087 | Rojo #D50000 | Amarillo #FFB300
+   ============================================ */
+
+:root {
+  /* ---- BRAND COLORS ---- */
+  --ultranex-blue:        #003087;
+  --ultranex-blue-dark:   #001f5c;
+  --ultranex-blue-mid:    #0050b3;
+  --ultranex-blue-light:  #e6eef9;
+  --ultranex-red:         #D50000;
+  --ultranex-red-dark:    #9b0000;
+  --ultranex-red-light:   #fff0f0;
+  --ultranex-yellow:      #FFB300;
+  --ultranex-yellow-dark: #e65100;
+  --ultranex-yellow-light:#fff8e1;
+
+  /* ---- NEUTRALS ---- */
+  --color-white:          #ffffff;
+  --color-off-white:      #f8f9fc;
+  --color-surface:        #f2f4f8;
+  --color-border:         #dde2ec;
+  --color-border-strong:  #b8c2d6;
+  --color-text-primary:   #0a0e1a;
+  --color-text-secondary: #3d4566;
+  --color-text-muted:     #7a84a0;
+  --color-text-on-dark:   #ffffff;
+
+  /* ---- STATUS ---- */
+  --color-success:        #1a7f4a;
+  --color-success-bg:     #e8f5ee;
+  --color-warning:        #b45309;
+  --color-warning-bg:     #fef3c7;
+  --color-danger:         var(--ultranex-red);
+  --color-danger-bg:      var(--ultranex-red-light);
+  --color-info:           var(--ultranex-blue-mid);
+  --color-info-bg:        var(--ultranex-blue-light);
+
+  /* ---- TYPOGRAPHY ---- */
+  --font-display:         'Barlow Condensed', sans-serif;
+  --font-body:            'Barlow', sans-serif;
+
+  /* ---- SPACING ---- */
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:   16px;
+  --space-lg:   24px;
+  --space-xl:   40px;
+  --space-2xl:  64px;
+  --space-3xl:  96px;
+
+  /* ---- RADIUS ---- */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-pill:999px;
+
+  /* ---- SHADOWS ---- */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 16px rgba(0,48,135,0.10), 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-lg:  0 12px 40px rgba(0,48,135,0.15), 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-hero:0 24px 80px rgba(0,48,135,0.25);
+
+  /* ---- TRANSITIONS ---- */
+  --transition-fast:  0.15s ease;
+  --transition-base:  0.25s ease;
+  --transition-slow:  0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* ---- LAYOUT ---- */
+  --container-max:    1280px;
+  --navbar-height:    72px;
+}
