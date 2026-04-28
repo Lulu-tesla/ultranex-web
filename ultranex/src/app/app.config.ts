@@ -1,19 +1,20 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withViewTransitions, withComponentInputBinding } from '@angular/router';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
-import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
+    // 1. Configuración del Router con Scroll por ID
     provideRouter(
       routes,
-      withViewTransitions(),
-      withComponentInputBinding()
+      withInMemoryScrolling({
+        anchorScrolling: 'enabled',        // Habilita el salto a #IDs
+        scrollPositionRestoration: 'enabled' // Vuelve arriba al cambiar de página
+      })
     ),
-    provideHttpClient(
-      withInterceptors([authInterceptor])
-    )
+
+    // 2. Otros proveedores globales (fuera de provideRouter)
+    // Nota: provideBrowserGlobalErrorListeners no es estándar de Angular core,
+    // asegúrate de que tu librería lo soporte o bórralo si te da error.
   ]
 };

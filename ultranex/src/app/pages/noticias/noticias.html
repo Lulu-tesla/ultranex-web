@@ -1,0 +1,36 @@
+<div class="noticias-wrapper">
+
+  <header class="news-hero">
+    <div class="container">
+      <span class="news-label">CENTRO DE ACTUALIDAD</span>
+      <h1 class="news-title">Noticias y <span class="accent-text">Reportes</span></h1>
+      <p class="news-subtitle">Manténgase informado sobre las últimas operaciones y avances tecnológicos de Ultranex.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="news-grid">
+
+      <article class="news-card" *ngFor="let item of noticias">
+        <div class="news-img-box">
+          <img [src]="item.img" [alt]="item.titulo">
+          <span class="category-tag">{{ item.categoria }}</span>
+        </div>
+
+        <div class="news-body">
+          <span class="news-date">{{ item.fecha }}</span>
+          <h3>{{ item.titulo }}</h3>
+          <p>{{ item.extracto }}</p>
+
+          <button class="btn-read-more">
+            LEER MÁS
+            <i class='bx bx-right-arrow-alt'></i>
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <app-footer></app-footer>
+</div>

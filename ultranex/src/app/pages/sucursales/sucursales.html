@@ -1,0 +1,82 @@
+<div class="sucursales-master-wrapper">
+
+  <header class="sucursales-hero">
+    <div class="hero-bg-container">
+      <img src="assets/images/sucursales/hero-log.png" alt="Ultranex Network Infrastructure">
+    </div>
+    <div class="hero-content">
+      <div class="container">
+        <span class="label-tech">INFRAESTRUCTURA GLOBAL</span>
+        <h1 class="main-title">Red de <br> <span class="outline-blue">Operaciones</span></h1>
+        <p class="hero-description">Nodos estratégicos equipados con tecnología de monitoreo y gestión de carga en tiempo real para envíos nacionales.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="branches-grid">
+
+      <article class="industrial-branch-card" *ngFor="let oficina of sucursales">
+        <div class="card-tag-header">
+          <span class="branch-code">{{ oficina.id }}</span>
+          <div class="live-status">
+            <span class="pulse-dot"></span> SISTEMA EN LÍNEA
+          </div>
+        </div>
+
+        <div class="office-visual-wrapper">
+          <img [src]="oficina.img" [alt]="oficina.ciudad" class="photo-img" loading="lazy">
+          <div class="city-overlay">{{ oficina.ciudad }}</div>
+        </div>
+
+        <div class="card-content-box">
+          <div class="branch-heading">
+            <h2 class="city-title">{{ oficina.ciudad }}</h2>
+            <p class="service-type">{{ oficina.tipo }}</p>
+          </div>
+
+          <div class="technical-data-stack">
+            <div class="data-item">
+              <i class='bx bx-map-alt'></i>
+              <div class="text-data">
+                <label>Punto de Recepción</label>
+                <p>{{ oficina.direccion }}</p>
+              </div>
+            </div>
+            <div class="data-item">
+              <i class='bx bx-phone-call'></i>
+              <div class="text-data">
+                <label>Enlace Directo</label>
+                <p>{{ oficina.telefono }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-map-container">
+            <div class="map-overlay-label">SISTEMA GPS ACTIVO</div>
+
+            <iframe
+              [src]="getSafeUrl(oficina.mapaEmbed)"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+            <div class="laser-scan"></div>
+          </div>
+        </div>
+
+        <button class="btn-industrial-action" (click)="abrirMapa(oficina.mapLink)">
+          <i class='bx bx-navigation'></i>
+          <span>GENERAR RUTA DE CARGA</span>
+        </button>
+      </article>
+
+    </div>
+  </main>
+
+  <app-footer></app-footer>
+</div>

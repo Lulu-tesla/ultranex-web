@@ -1,0 +1,56 @@
+<section id="rastreo-seccion" class="tracking-section">
+  <div class="tracking-container">
+
+    <div class="tracking-main-card">
+      <div class="tracking-content">
+
+        <div class="action-side">
+          <div class="card-badge">SERVICIO NACIONAL</div>
+          <h2 class="tracking-title">SEGUIMIENTO <br> DE ENVÍOS</h2>
+
+          <div class="input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" [(ngModel)]="guia" placeholder="Ingresa tu número de guía..." class="ultra-input">
+            <button (click)="onTrack()" class="ultra-btn">
+              <span>RASTREAR</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <p class="helper-text">
+            <i class="fa-solid fa-circle-info"></i>
+            Introduce los dígitos de tu guía sin guiones para una búsqueda exacta.
+          </p>
+        </div>
+
+        <div class="info-side">
+          <div class="step-item">
+            <div class="step-number">01</div>
+            <div class="step-info">
+              <h4>Ingresa tu guía</h4>
+              <p>Ubica el número en tu comprobante de envío físico o digital.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-number">02</div>
+            <div class="step-info">
+              <h4>Verifica Estado</h4>
+              <p>Conoce en tiempo real si tu paquete está en tránsito o en sucursal.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-number">03</div>
+            <div class="step-info">
+              <h4>Recibe Seguro</h4>
+              <p>Nuestro equipo te notificará cuando el paquete esté listo para entrega.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,168 @@
+.contacto-section-white {
+    background-color: #ffffff !important;
+    padding: 120px 0;
+    width: 100%;
+}
+
+.contacto-container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+/* --- INFO SIDE --- */
+.contacto-tag {
+    color: #1C05B3;
+    letter-spacing: 4px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.contacto-title-algerian {
+    font-family: 'Algerian', serif !important;
+    font-size: 3rem;
+    color: #1a1a1a;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.text-red { color: #FF0000; }
+
+.contacto-description {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.info-cards-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background: #fcfcfc;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.info-card:hover {
+    transform: translateX(15px);
+    border-color: #1C05B3;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.05);
+}
+
+.info-icon-box {
+    width: 55px;
+    height: 55px;
+    background: #1C05B3;
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.info-text-box span {
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.info-text-box p {
+    font-family: 'Algerian', serif !important;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+/* --- FORM SIDE --- */
+.form-wrapper {
+    background: #050505;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.form-header h4 {
+    color: white;
+    font-family: 'Algerian', serif !important;
+    font-size: 1.5rem;
+    margin-bottom: 35px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.ultra-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 18px 25px;
+    border-radius: 12px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-input:focus, .form-textarea:focus {
+    border-color: #1C05B3;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-textarea {
+    height: 150px;
+    resize: none;
+}
+
+.btn-send-ultra {
+    background: #1C05B3;
+    color: white;
+    border: none;
+    padding: 22px;
+    border-radius: 12px;
+    font-family: 'Algerian', serif !important;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: 0.4s;
+    margin-top: 10px;
+}
+
+.btn-send-ultra:hover {
+    background: #FF0000;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 0, 0, 0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .contacto-grid { grid-template-columns: 1fr; gap: 50px; }
+    .form-wrapper { padding: 35px; }
+}

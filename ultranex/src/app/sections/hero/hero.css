@@ -1,0 +1,112 @@
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #050505;
+  overflow: hidden;
+  /* Bajamos el contenido para que respire con el Navbar gigante */
+  padding-top: 180px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
+                    url('../../../assets/images/hero/hero6.png');
+  background-size: cover;
+  background-position: center 25%;
+  z-index: 1;
+  filter: brightness(1.2) contrast(1.1);
+}
+
+.hero-container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  width: 100%;
+}
+
+/* --- ANIMACIÓN TÍTULO --- */
+.txt-red-nacional {
+  color: #FF0000;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(3.5rem, 12vw, 7.5rem); /* Un poco más grande e imponente */
+  font-weight: 950;
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin-bottom: 15px;
+  display: inline-block; /* Para que la animación de escala funcione bien */
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+}
+
+.txt-red-nacional:hover {
+  transform: scale(1.05); /* Animación suave al pasar el mouse */
+  text-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
+}
+
+/* --- ESLOGAN MEJORADO --- */
+.txt-slogan {
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem); /* Letras más grandes */
+  color: #ffffff;
+  font-style: italic;
+  margin-bottom: 50px;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.slogan-icon {
+  color: #1C05B3; /* Tu azul neto */
+  font-size: 1.8rem;
+  filter: drop-shadow(0 0 10px rgba(28, 5, 179, 0.8));
+}
+
+/* --- BARRA DE CONFIANZA (No botones) --- */
+.trust-bar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.trust-card {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  padding: 15px 30px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.4s ease;
+}
+
+.gold-icon {
+  font-size: 1.6rem;
+  background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #B8860B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+}
+
+.trust-label {
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  font-size: 0.9rem;
+}
+
+/* Aunque no son botones, que reaccionen sutilmente al pasar el mouse */
+.trust-card:hover {
+  border-color: #FFD700;
+  background: rgba(10, 10, 10, 0.8);
+  transform: translateY(-5px);
+}

@@ -1,0 +1,190 @@
+/* ============================================================
+   ESTADO INICIAL Y ACTIVO CON DIFUMINADO (BLUR)
+   ============================================================ */
+
+.nav-premium {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Efecto inicial: Transparente pero ya con un ligero blur */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ESTADO CUANDO EL USUARIO HACE SCROLL */
+.nav-active {
+    height: 75px;
+    /* Un blanco más presente pero manteniendo la transparencia */
+    background: rgba(255, 255, 255, 0.65);
+
+    /* El difuminado se intensifica para dar sensación de cristal grueso */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(25px);
+
+    /* Sombra técnica y borde sutil en Azul Neto */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(28, 5, 179, 0.15);
+}
+
+.nav-blur-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* OPTIMIZACIÓN DE TEXTO PARA FONDO DIFUMINADO */
+.nav-link {
+    color: #000; /* Negro sólido para que resalte sobre el cristal */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Ayuda a la lectura si el fondo es claro */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #1C05B3; /* Tu Azul Neto */
+}
+
+/* --- LOGO BOX --- */
+.nav-brand-link {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.logo-power-box {
+    width: 250px;
+    height: 100px;
+    background: url('/assets/images/logos/logo.png') no-repeat center/contain;
+    transition: 0.3s;
+}
+
+.nav-active .logo-power-box {
+    transform: scale(0.9);
+}
+
+/* --- MENÚ DE NAVEGACIÓN --- */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1a1a1a;
+    position: relative;
+    padding: 10px 0;
+    transition: 0.3s;
+}
+
+/* Si el navbar no tiene fondo activo (transparente), las letras pueden ser blancas */
+.nav-premium:not(.nav-active) .nav-link {
+    color: #000000; /* Cámbialo a #fff si tu Hero es muy oscuro */
+}
+
+/* Efecto de línea inferior técnica */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #1C05B3; /* Azul Neto */
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.nav-link:hover {
+    color: #1C05B3;
+}
+
+.nav-link:hover::after,
+.active-link::after {
+    width: 100%;
+}
+
+.active-link {
+    color: #1C05B3 !important;
+}
+
+/* --- BOTÓN DE ACCESO / CONTACTO --- */
+.contact-btn {
+    background: #000;
+    color: #fff !important;
+    padding: 12px 28px !important;
+    border-radius: 2px;
+    transition: all 0.3s !important;
+}
+
+.contact-btn::after {
+    display: none;
+}
+
+.contact-btn:hover {
+    background: #1C05B3;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(28, 5, 179, 0.2);
+}
+
+/* --- MOBILE TOGGLE --- */
+.mobile-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #1a1a1a;
+}
+
+/* --- RESPONSIVE LOGIC --- */
+@media (max-width: 1100px) {
+    .mobile-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: #ffffff;
+        flex-direction: column;
+        justify-content: center;
+        transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: -20px 0 50px rgba(0,0,0,0.1);
+        z-index: 9999;
+    }
+
+    .nav-menu.mobile-open {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+        color: #000 !important;
+    }
+}

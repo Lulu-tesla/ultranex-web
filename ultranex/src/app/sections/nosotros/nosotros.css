@@ -1,0 +1,144 @@
+.nosotros-section {
+  background-color: #ffffff !important;
+  padding: 100px 0;
+  /* Aplicamos Algerian como base de toda la sección */
+
+  scroll-margin-top: 120px;
+}
+
+.nosotros-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nosotros-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+/* --- TÍTULO PRINCIPAL --- */
+.nosotros-title {
+  color: #1a1a1a;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* --- PÁRRAFOS CON ESTILO ALGERIAN --- */
+.nosotros-desc {
+  color: #444;
+
+  font-size: 1.1rem;
+  line-height: 1.5; /* Ajustado para la fuente Algerian */
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.subtitle {
+  color: #1a1a1a;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.sub-desc {
+  color: #777;
+  font-family: 'Algerian', serif;
+  font-size: 0.95rem;
+}
+
+/* --- TARJETAS MISIÓN Y VISIÓN --- */
+/* CONTENEDOR PRINCIPAL */
+.mv-full-width {
+    max-width: 1200px;
+    margin: -80px auto 100px; /* El -80px sube las cards hacia la sección del camión */
+    display: flex;
+    gap: 40px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* ESTILO DE LAS TARJETAS */
+.mv-card {
+    background: #ffffff;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px; /* Industrial Square */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.mv-card:hover {
+    transform: translateY(-10px);
+    border-color: #1C05B3;
+    box-shadow: 0 30px 60px rgba(28, 5, 179, 0.1);
+}
+
+/* CAJA DE ICONOS */
+.mv-icon-box {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+    transition: 0.3s;
+}
+
+.mv-icon-box i {
+    font-size: 2.2rem;
+    color: #1C05B3; /* Tu Azul Neto */
+}
+
+.mv-card:hover .mv-icon-box {
+    background: #1C05B3;
+}
+
+.mv-card:hover .mv-icon-box i {
+    color: #ffffff;
+}
+
+/* TEXTO DENTRO DE LAS CARDS */
+.mv-text h4 {
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #000;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.mv-text p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- IMAGEN --- */
+.van-render {
+  width: 100%;
+  height: 350px;
+  background-image: url('../../../assets/images/nosotros/camioneta-nosotros1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(15px 20px 30px rgba(0,0,0,0.15));
+}
+
+@media (max-width: 992px) {
+  .nosotros-grid, .mv-full-width {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+  .van-render { height: 250px; }
+}
